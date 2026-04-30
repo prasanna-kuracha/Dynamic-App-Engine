@@ -1,0 +1,38 @@
+{
+  "appName": "Todo App",
+  "auth": {
+    "enabled": true,
+    "methods": ["email"],
+    "allowRegistration": true
+  },
+  "models": [
+    {
+      "name": "Todo",
+      "fields": [
+        { "name": "title", "type": "string", "required": true },
+        { "name": "completed", "type": "boolean", "default": false },
+        { "name": "dueDate", "type": "date", "required": false }
+      ]
+    }
+  ],
+  "views": [
+    {
+      "id": "todo-list",
+      "type": "table",
+      "model": "Todo",
+      "title": "My Tasks",
+      "columns": ["title", "completed", "dueDate"]
+    },
+    {
+      "id": "todo-form",
+      "type": "form",
+      "model": "Todo",
+      "title": "Add Task",
+      "fields": ["title", "dueDate"]
+    }
+  ],
+  "navigation": [
+    { "label": "Dashboard", "path": "/", "icon": "Home" },
+    { "label": "Tasks", "path": "/tasks", "icon": "CheckSquare" }
+  ]
+}

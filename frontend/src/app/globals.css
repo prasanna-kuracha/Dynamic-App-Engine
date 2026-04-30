@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--background);
+  font-size: 18px;
+  /* Restored to standard font size */
+}
+
+body {
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide days outside the current month in the calendar */
+.react-datepicker__day--outside-month {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #E0E7FF;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #C7D2FE;
+}
+
+/* React Datepicker Modernization */
+.react-datepicker-wrapper {
+  display: block !important;
+  width: 100% !important;
+}
+
+.react-datepicker {
+  font-family: inherit !important;
+  border-radius: 1.5rem !important;
+  border: none !important;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.1) !important;
+  padding: 1rem !important;
+  background: white !important;
+}
+
+.react-datepicker__header {
+  background: white !important;
+  border-bottom: none !important;
+}
+
+.react-datepicker__day--selected {
+  background-color: #6366F1 !important;
+  border-radius: 0.75rem !important;
+}
+
+.react-datepicker__day:hover {
+  border-radius: 0.75rem !important;
+}
