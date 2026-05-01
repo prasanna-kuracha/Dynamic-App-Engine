@@ -17,22 +17,29 @@
   ],
   "views": [
     {
+      "id": "todo-stats",
+      "type": "dashboard",
+      "model": "Todo",
+      "title": "Dashboard Overview"
+    },
+    {
       "id": "todo-list",
       "type": "table",
       "model": "Todo",
-      "title": "My Tasks",
+      "title": "Task List",
       "columns": ["title", "completed", "dueDate"]
     },
     {
       "id": "todo-form",
       "type": "form",
       "model": "Todo",
-      "title": "Add Task",
+      "title": "Create New Task",
       "fields": ["title", "dueDate"]
     }
   ],
   "navigation": [
-    { "label": "Dashboard", "path": "/", "icon": "Home" },
-    { "label": "Tasks", "path": "/tasks", "icon": "CheckSquare" }
+    { "label": "Dashboard", "path": "/", "icon": "LayoutDashboard" },
+    { "label": "Manage Tasks", "path": "/tasks", "icon": "CheckSquare" }
   ]
 }
+

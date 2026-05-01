@@ -62,12 +62,14 @@ function DynamicAppWrapper() {
       <div className="space-y-8">
         {config.views
           .filter(view => {
-             // Basic routing logic based on the user's request:
-             // If they click 'Tasks' (/tasks), show only the list.
-             // If they click 'Dashboard' (/), show both.
-             if (currentPath === '/tasks') return view.type === 'table';
+             // Logic:
+             // "/" (Dashboard) -> Only show the dashboard/analytics view.
+             // "/tasks" (Tasks) -> Show the table and form.
+             if (currentPath === '/') return view.type === 'dashboard';
+             if (currentPath === '/tasks') return view.type === 'table' || view.type === 'form';
              return true; 
           })
+
           .map((view) => {
             const model = config.models.find(m => m.name === view.model);
             if (!model) return null;

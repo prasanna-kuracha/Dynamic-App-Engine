@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+@variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+
 
 html,
 body {
@@ -32,7 +32,11 @@ body {
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
 }
+
 
 /* Hide days outside the current month in the calendar */
 .react-datepicker__day--outside-month {
@@ -55,8 +59,16 @@ body {
   border-radius: 10px;
 }
 
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #374151;
+}
+
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #C7D2FE;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #4B5563;
 }
 
 /* React Datepicker Modernization */
@@ -68,10 +80,30 @@ body {
 .react-datepicker {
   font-family: inherit !important;
   border-radius: 1.5rem !important;
-  border: none !important;
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.1) !important;
+  border: 1px solid #f3f4f6 !important;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.2) !important;
   padding: 1rem !important;
   background: white !important;
+}
+
+.dark .react-datepicker {
+  background: #1f2937 !important;
+  border-color: #374151 !important;
+  color: white !important;
+}
+
+.dark .react-datepicker__header {
+  background: #1f2937 !important;
+}
+
+.dark .react-datepicker__current-month, 
+.dark .react-datepicker__day-name, 
+.dark .react-datepicker__day {
+  color: #e5e7eb !important;
+}
+
+.dark .react-datepicker__day:hover {
+  background: #374151 !important;
 }
 
 .react-datepicker__header {
