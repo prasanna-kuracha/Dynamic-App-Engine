@@ -7,7 +7,8 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { DataImport } from './DataImport';
 import { AnalyticsDashboard } from './AnalyticsDashboard';
 import { jsPDF } from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
+
 import * as XLSX from 'xlsx';
 import { toast } from 'react-hot-toast';
 import { Plus, List, Calendar as CalendarIcon, Check, X, Search, Download, Database } from 'lucide-react';
@@ -79,22 +80,28 @@ const TableView: React.FC<{ view: ViewDef; model: ModelDef }> = ({ view, model }
   });
 
   const handleExportPDF = () => {
-    const doc = new jsPDF();
-    doc.text(`${view.title} - Export`, 14, 15);
-    
-    const tableRows = filteredData?.map((item: any) => columns.map((col: string) => item[col] || '-'));
-    
-    (doc as any).autoTable({
-      head: [columns.map((c: string) => c.toUpperCase())],
-      body: tableRows,
-      startY: 20,
-      styles: { fontSize: 8, font: 'helvetica' },
-      headStyles: { fillColor: [99, 102, 241], textColor: [255, 255, 255] },
-    });
-    
-    doc.save(`${model.name}_export.pdf`);
-    toast.success('PDF Exported Successfully!');
+    try {
+      const doc = new jsPDF();
+      doc.text(`${view.title} - Export`, 14, 15);
+      
+      const tableRows = filteredData?.map((item: any) => columns.map((col: string) => item[col] || '-'));
+      
+      autoTable(doc, {
+        head: [columns.map((c: string) => c.toUpperCase())],
+        body: tableRows || [],
+        startY: 20,
+        styles: { fontSize: 8, font: 'helvetica' },
+        headStyles: { fillColor: [99, 102, 241], textColor: [255, 255, 255] },
+      });
+      
+      doc.save(`${model.name}_export.pdf`);
+      toast.success('PDF Exported Successfully!');
+    } catch (error) {
+      console.error('PDF Export Error:', error);
+      toast.error('Failed to generate PDF. Please try again.');
+    }
   };
+
 
   const handleExportExcel = () => {
     const ws = XLSX.utils.json_to_sheet(filteredData || []);
@@ -172,7 +179,7 @@ const TableView: React.FC<{ view: ViewDef; model: ModelDef }> = ({ view, model }
           <table className="w-full text-left border-collapse">
             <thead className="bg-indigo-50/80 dark:bg-gray-700 sticky top-0 z-10 backdrop-blur-sm">
               <tr>
-                {columns.map(col => (
+                {columns.map((col: string) => (
                   <th key={col} className="px-8 py-4 text-xs font-black text-indigo-600 dark:text-indigo-300 uppercase tracking-[0.2em] border-b border-indigo-100 dark:border-gray-600">
                     {col}
                   </th>
@@ -188,7 +195,8 @@ const TableView: React.FC<{ view: ViewDef; model: ModelDef }> = ({ view, model }
                  </tr>
               ) : filteredData?.map((item: any, idx: number) => (
                 <tr key={idx} className="hover:bg-indigo-50/40 dark:hover:bg-indigo-900/10 transition-all group">
-                  {columns.map(col => {
+                  {columns.map((col: string) => {
+
                     const val = item[col];
                     const displayValue = (val === undefined || val === null || val === "") ? "-" : String(val);
                     

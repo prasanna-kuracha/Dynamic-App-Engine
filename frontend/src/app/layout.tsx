@@ -6,9 +6,13 @@ import { Providers } from "@/components/Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Dynamic App Engine | Premium Meta-Application",
-  description: "Next-generation dynamic app generator with high-end pastel UI.",
+  title: "Aura Engine | Dynamic App Generator",
+  description: "Next-generation dynamic app generator with high-end premium UI.",
+  icons: {
+    icon: '/icon.png',
+  }
 };
+
 
 export default function RootLayout({
   children,

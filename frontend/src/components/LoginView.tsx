@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
+import { Cpu } from 'lucide-react';
+
 
 const API_BASE_URL = 'http://localhost:5002/api/auth';
 
@@ -40,13 +42,13 @@ export const LoginView: React.FC<{ appName: string }> = ({ appName }) => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#EEF2FF] via-[#FDFCFE] to-[#F5F3FF] dark:bg-gray-900 px-4">
       <div className="max-w-md w-full space-y-8 bg-white/80 backdrop-blur-lg dark:bg-gray-800 p-10 rounded-[2rem] shadow-2xl shadow-indigo-200/50 border border-white">
         <div className="text-center">
-          <div className="mx-auto w-16 h-16 bg-indigo-500 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200 mb-6">
-            <span className="text-2xl font-black text-white italic">A</span>
+          <div className="mx-auto w-14 h-14 bg-indigo-500 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200 mb-6">
+            <Cpu className="w-8 h-8 text-white" />
           </div>
-          <h2 className="text-3xl font-black text-indigo-900 dark:text-white tracking-tight">
+          <h2 className="text-xl font-black text-indigo-900 dark:text-white tracking-tight">
             {appName}
           </h2>
-          <p className="mt-3 text-sm font-bold text-indigo-400 tracking-wide">
+          <p className="mt-2 text-xs font-bold text-indigo-400 tracking-wide">
             {isRegister ? 'CREATE YOUR ACCOUNT' : 'WELCOME BACK'}
           </p>
         </div>
@@ -64,7 +66,7 @@ export const LoginView: React.FC<{ appName: string }> = ({ appName }) => {
                 placeholder="Full Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="block w-full h-14 px-5 rounded-2xl border-2 border-indigo-50 bg-indigo-50/30 text-gray-800 placeholder-indigo-300 focus:bg-white focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 outline-none transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                className="block w-full h-12 px-5 rounded-2xl border-2 border-indigo-50 bg-indigo-50/30 text-sm text-gray-800 placeholder-indigo-300 focus:bg-white focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 outline-none transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
             )}
             <input
@@ -73,7 +75,7 @@ export const LoginView: React.FC<{ appName: string }> = ({ appName }) => {
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="block w-full h-14 px-5 rounded-2xl border-2 border-indigo-50 bg-indigo-50/30 text-gray-800 placeholder-indigo-300 focus:bg-white focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 outline-none transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              className="block w-full h-12 px-5 rounded-2xl border-2 border-indigo-50 bg-indigo-50/30 text-sm text-gray-800 placeholder-indigo-300 focus:bg-white focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 outline-none transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             />
             <input
               type="password"
@@ -81,14 +83,14 @@ export const LoginView: React.FC<{ appName: string }> = ({ appName }) => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="block w-full h-14 px-5 rounded-2xl border-2 border-indigo-50 bg-indigo-50/30 text-gray-800 placeholder-indigo-300 focus:bg-white focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 outline-none transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              className="block w-full h-12 px-5 rounded-2xl border-2 border-indigo-50 bg-indigo-50/30 text-sm text-gray-800 placeholder-indigo-300 focus:bg-white focus:border-indigo-300 focus:ring-4 focus:ring-indigo-100 outline-none transition-all dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             />
           </div>
 
           <div>
             <button
               type="submit"
-              className="w-full h-14 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-2xl font-black text-lg shadow-xl shadow-indigo-200 hover:shadow-indigo-300 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="w-full h-12 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-2xl font-black text-sm shadow-xl shadow-indigo-200 hover:shadow-indigo-300 hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
               {isRegister ? 'JOIN NOW' : 'SIGN IN'}
             </button>
@@ -97,7 +99,7 @@ export const LoginView: React.FC<{ appName: string }> = ({ appName }) => {
         <div className="text-center mt-6">
           <button
             onClick={() => setIsRegister(!isRegister)}
-            className="text-sm font-bold text-indigo-500 hover:text-indigo-700 transition-colors"
+            className="text-xs font-bold text-indigo-500 hover:text-indigo-700 transition-colors"
           >
             {isRegister ? 'Already have an account? Sign in' : "Don't have an account? Create one"}
           </button>

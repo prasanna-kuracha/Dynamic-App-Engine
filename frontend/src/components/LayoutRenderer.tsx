@@ -123,7 +123,7 @@ export const LayoutRenderer: React.FC<LayoutRendererProps> = ({ appName, navigat
         <div className="p-8 flex-shrink-0">
           <div className="flex items-center space-x-3 mb-2">
             <div className="w-10 h-10 bg-indigo-500 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200">
-              <Icons.Zap className="w-6 h-6 text-white" />
+              <Icons.Cpu className="w-6 h-6 text-white" />
             </div>
             <h1 className="text-2xl font-black text-indigo-900 dark:text-white tracking-tight">{appName}</h1>
           </div>
