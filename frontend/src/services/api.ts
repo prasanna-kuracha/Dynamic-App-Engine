@@ -1,4 +1,10 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5002/api';
+let API_BASE_URL = 'http://localhost:5002/api';
+if (process.env.NEXT_PUBLIC_API_URL) {
+  API_BASE_URL = process.env.NEXT_PUBLIC_API_URL.replace(/\/+$/, '');
+  if (!API_BASE_URL.endsWith('/api')) {
+    API_BASE_URL += '/api';
+  }
+}
 
 export const fetchConfig = async () => {
   const response = await fetch(`${API_BASE_URL}/config`);

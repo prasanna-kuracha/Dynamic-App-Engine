@@ -5,7 +5,14 @@ import { useAuth } from '@/context/AuthContext';
 import { Cpu } from 'lucide-react';
 
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ? `${process.env.NEXT_PUBLIC_API_URL}/auth` : 'http://localhost:5002/api/auth';
+let API_BASE_URL = 'http://localhost:5002/api/auth';
+if (process.env.NEXT_PUBLIC_API_URL) {
+  let base = process.env.NEXT_PUBLIC_API_URL.replace(/\/+$/, '');
+  if (!base.endsWith('/api')) {
+    base += '/api';
+  }
+  API_BASE_URL = `${base}/auth`;
+}
 
 export const LoginView: React.FC<{ appName: string }> = ({ appName }) => {
   const { login } = useAuth();
