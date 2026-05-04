@@ -1,62 +1,107 @@
-# 🚀 Dynamic App Generator (Meta-Engine)
+# 🌌 Aura Engine: Premium Meta-Application Engine
 
-This project is a high-performance **Meta-Application Generator** that translates structured JSON configurations into a fully functional, premium web application (React + Express + SQLite/Prisma).
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://aura-engine-frontend.vercel.app/)
+[![Backend](https://img.shields.io/badge/backend-Render-blue)](https://my-backend-jlcm.onrender.com/health)
 
-## 🛠 Architecture & Stack
-
-- **Frontend**: Next.js 14, Tailwind CSS, TanStack Query, Lucide Icons, React Datepicker.
-- **Backend**: Node.js + TypeScript + Express.
-- **ORM/DB**: Prisma v6.2.1 + SQLite (Dynamic JSONB Storage).
-- **Core Engine**: A generic runtime that interprets `todo.json` to render UI and handle API requests.
+Aura Engine is a high-performance, enterprise-grade **Meta-Application Generator**. It translates structured JSON configurations into a fully functional, premium web application with real-time analytics, dynamic data management, and secure authentication.
 
 ---
 
-## 🏃 Getting Started
+## 🔗 Live Deployment
+*   **Frontend**: [aura-engine-frontend.vercel.app](https://aura-engine-frontend.vercel.app/)
+*   **Backend API**: [my-backend-jlcm.onrender.com](https://my-backend-jlcm.onrender.com/api/config)
 
-To run this project on your local machine, you will need to open **two separate terminal windows**.
+---
 
-### **1. Backend Setup (API & Database)**
-Go to the backend directory and initialize the database:
+## ✨ Premium Features
+
+-   **⚡ Dynamic Core**: Interprets JSON schemas to instantly generate complex Forms, Tables, and Dashboard Analytics.
+-   **🎨 Aesthetic Excellence**: Modern, high-end UI featuring:
+    *   **Glassmorphism** and smooth **Framer Motion** transitions.
+    *   **Dark & Light Mode** support with smooth color transitions.
+    *   Professional Isometric Iconography.
+-   **📊 Data Intelligence**:
+    *   **Dashboard View**: Real-time KPI cards and data distribution analysis.
+    *   **Advanced Export**: Robust PDF and Excel generation with professional table formatting.
+    *   **Import System**: Dynamic CSV/JSON importer with intelligent column mapping.
+-   **🔐 Secure User Management**:
+    *   JWT-based authentication with high-security bcrypt password hashing.
+    *   Modern **Profile Management** with secure logout and user context.
+-   **🚀 Production Ready**: Pre-configured for **Vercel** (Frontend) and **Render** (Backend) with **PostgreSQL** persistence.
+
+---
+
+## 🛠 Tech Stack
+
+### **Frontend**
+-   **Framework**: Next.js 14 (App Router)
+-   **Styling**: Tailwind CSS 4 (Vanilla CSS utility-first)
+-   **State Management**: TanStack Query (React Query)
+-   **Animations**: Framer Motion
+-   **Icons**: Lucide React
+
+### **Backend**
+-   **Runtime**: Node.js & TypeScript
+-   **Framework**: Express.js
+-   **ORM**: Prisma ORM
+-   **Database**: 
+    *   **Development**: SQLite
+    *   **Production**: PostgreSQL
+-   **Auth**: JSON Web Tokens (JWT) & bcryptjs
+
+---
+
+## 🏃 Local Setup
+
+### **1. Clone & Install**
+```bash
+git clone https://github.com/prasanna-kuracha/Dynamic-App-Engine.git
+cd Dynamic-App-Engine
+```
+
+### **2. Backend Configuration**
+Create a `.env` file in `backend/`:
+```env
+PORT=5002
+JWT_SECRET=your_jwt_secret
+DATABASE_URL="file:./prod.db"
+```
+Run the setup:
 ```bash
 cd backend
 npm install
 npx prisma db push
 npm run dev
 ```
-> **Note**: The backend will start on **http://localhost:5002** (or 5000) and will automatically sync with the Prisma schema.
 
-### **2. Frontend Setup (Modern UI)**
-In a new terminal window, start the React development server:
+### **3. Frontend Configuration**
+Create a `.env.local` file in `frontend/`:
+```env
+NEXT_PUBLIC_API_URL="http://localhost:5002/api"
+```
+Start the application:
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-> **Note**: The frontend will start on **http://localhost:3002** (or 3000). Access the dashboard through this URL.
-
----
-
-## ✨ Key Features
-
-- **Dynamic Core**: Renders complex Tables and Forms based on JSON definitions.
-- **Eye-Feast UI**: Premium pastel-themed design with Glassmorphism and smooth animations.
-- **Modern Date Picker**: Integrated `react-datepicker` for a polished calendar experience.
-- **Data Import System**: Supports both **CSV and JSON** formats with a dynamic column mapping interface.
-- **Authentication**: JWT-based Auth system with custom Login/Register views.
-- **Responsive Layout**: Optimized for all screen sizes with a professional sidebar and header system.
-
----
-
-## ⚙️ Configuration
-
-The entire application logic is driven by the configuration files in `/configs`.
-- **Modify `configs/todo.json`**: Change fields, models, or UI types and the app will update instantly.
 
 ---
 
 ## 📂 Project Structure
 
-- `frontend/`: React-based dynamic UI renderer.
-- `backend/`: TypeScript-based dynamic API engine.
-- `configs/`: Sample JSON configurations for app generation.
-- `shared/`: Common Zod schemas and TypeScript types.
+-   `frontend/`: React/Next.js dynamic UI renderer and state management.
+-   `backend/`: TypeScript API engine with Prisma database layer.
+-   `backend/configs/`: JSON configuration files that drive the entire application logic.
+-   `shared/`: Shared Zod schemas and TypeScript interfaces for full-stack type safety.
+
+---
+
+## ⚙️ How it Works
+The entire application is driven by the **`todo.json`** file inside `backend/configs/`. By modifying this single JSON file, you can change:
+1.  **Data Models**: Add or remove fields from your database.
+2.  **Navigation**: Modify the sidebar menu items.
+3.  **Views**: Create new Tables, Forms, or Dashboard analytics widgets instantly.
+
+---
+*Created with ❤️ by Antigravity*
