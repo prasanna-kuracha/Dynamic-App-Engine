@@ -10,11 +10,14 @@ const app = express();
 const PORT = process.env.PORT || 5002;
 
 app.use(cors({
-  origin: [
-    'https://dynamic-app-engine.vercel.app',
-    'http://localhost:3000',
-    'http://localhost:3002'
-  ],
+  origin: function (origin, callback) {
+    // Allow all vercel subdomains and localhost
+    if (!origin || origin.endsWith('.vercel.app') || origin.includes('localhost') || origin.includes('127.0.0.1')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 app.use(express.json());
