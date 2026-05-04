@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express';
-import { ConfigService } from '../services/ConfigService';
-import prisma from '../lib/prisma';
+import { ConfigService } from '../services/ConfigService.js';
+import prisma from '../lib/prisma.js';
 
 const configService = new ConfigService();
 
@@ -11,7 +11,7 @@ export class DynamicController {
     if (!modelName) return res.status(400).json({ error: 'Model name is required' });
 
     const config = configService.getConfig();
-    const model = config.models.find(m => m.name.toLowerCase() === (modelName as string).toLowerCase());
+    const model = config.models.find((m: any) => m.name.toLowerCase() === (modelName as string).toLowerCase());
 
     if (!model) {
       return res.status(404).json({ error: `Model ${modelName} not found` });
@@ -23,7 +23,7 @@ export class DynamicController {
       });
       
       // Flatten the data blob for the frontend
-      const data = records.map(r => ({
+      const data = records.map((r: any) => ({
         id: r.id,
         ...(r.data as object),
         createdAt: r.createdAt
@@ -40,7 +40,7 @@ export class DynamicController {
     if (!modelName) return res.status(400).json({ error: 'Model name is required' });
 
     const config = configService.getConfig();
-    const model = config.models.find(m => m.name.toLowerCase() === (modelName as string).toLowerCase());
+    const model = config.models.find((m: any) => m.name.toLowerCase() === (modelName as string).toLowerCase());
 
     if (!model) {
       return res.status(404).json({ error: `Model ${modelName} not found` });

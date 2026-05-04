@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { DynamicController } from '../controllers/DynamicController';
+import { DynamicController } from '../controllers/DynamicController.js';
 
 const router = Router();
 
