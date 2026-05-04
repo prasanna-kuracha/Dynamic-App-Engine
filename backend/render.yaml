@@ -3,7 +3,7 @@ services:
     name: my-backend
     env: node
     rootDir: backend
-    buildCommand: npm install && npm run build
+    buildCommand: npm install --include=dev && npm install zod --prefix ../ && npm run build
     startCommand: npm run start
     envVars:
       - key: NODE_ENV
